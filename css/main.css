@@ -1,0 +1,276 @@
+:root {
+    --color-primary-dark: rgba(35, 11, 89, 1);  /* Глубокий фиолетовый для текста */
+    --color-accent: rgba(72, 64, 187, 1);        /* Яркий фиолетовый для кнопок */
+    --color-white: rgba(255, 255, 255, 1);       /* Чистый белый */
+    --max-width: 1440px;
+    --header-height: 96px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--color-primary-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1312px; /* Тот самый размер из твоего макета */
+    margin: 0 auto;    /* Центрирование */
+    padding: 0 24px;   /* Безопасные отступы для мобильных */
+    box-sizing: border-box;
+}
+
+
+
+.header {
+    width: 100%;
+    /* Если макет ограничен 1440px, центрируем саму шапку */
+    max-width: 1440px; 
+    margin: 0 auto;
+    
+    height: 96px;
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: center; /* Центрируем внутренний контейнер */
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    width: 100%;
+    /* Ограничиваем контентную область согласно макету */
+    max-width: 1312px; 
+    
+    /* Внутренние отступы для мобильных устройств */
+    padding: 0 24px; 
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Чтобы padding не увеличивал ширину блока */
+    box-sizing: border-box; 
+}
+
+
+/* Стили для списка ссылок */
+.nav-menu {
+    display: flex;
+    list-style: none; /* Убираем маркеры (точки) */
+    margin: 0;
+    padding: 0;
+    gap: 32px; /* Расстояние между элементами списка */
+}
+
+/* Стили каждой ссылки */
+.nav-item {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    position: relative;
+    transition: color 0.2s ease;
+    display: block; /* Делаем область клика корректной */
+}
+
+/* Эффект при наведении */
+.nav-item:hover {
+    color: var(--color-accent); /* rgba(72, 64, 187, 1) */
+}
+
+/* Опционально: подчеркивание, которое появляется плавно */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* Контейнер для кнопок */
+.auth-group {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Расстояние между кнопками */
+}
+
+/* Общие стили для обеих кнопок */
+.btn-nav {
+    padding: 10px 24px;
+    border-radius: 8px; /* Скругление из макета */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* Кнопка "Log in" (Прозрачная с рамкой) */
+.btn-login {
+    background-color: transparent;
+    color: var(--color-accent); /* rgba(72, 64, 187, 1) */
+    border: 1.5px solid var(--color-accent);
+}
+
+.btn-login:hover {
+    background-color: rgba(72, 64, 187, 0.05); /* Легкий оттенок при наведении */
+}
+
+/* Кнопка "Get started" (Залитая) */
+.btn-get-started {
+    background-color: var(--color-accent); /* rgba(72, 64, 187, 1) */
+    color: var(--color-white); /* rgba(255, 255, 255, 1) */
+    border: 1.5px solid var(--color-accent);
+}
+
+.btn-get-started:hover {
+    background-color: #3b32a8; /* Чуть темнее при наведении */
+    border-color: #3b32a8;
+    box-shadow: 0 4px 12px rgba(72, 64, 187, 0.2); /* Мягкая тень */
+}
+
+.hero-section {
+    width: 100%;
+    /* Если фон секции должен быть серым или белым на весь экран, 
+       стилизуем именно hero-section */
+    background-color: var(--color-white);
+}
+.hero-content {
+    flex: 1;
+}
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 0; /* Отступы сверху и снизу */
+    gap: 60px;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    display: block;
+    border-radius: 24px;
+}
+
+
+
+.hero-content-1 {
+    margin-bottom: 32px;
+}
+
+.hero-content-1 h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.hero-content-2 {
+    margin-bottom: 32px;
+}
+
+.hero-content-2 p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 480px;
+}
+
+.hero-content-3 .btn-get-started {
+    font-size: 18px;
+    padding: 14px 32px;
+}
+
+
+.trust-bar {
+    width: 100%;
+    background-color: var(--color-white);
+    border-bottom: 1px solid #f0f0f0; /* Светлая разделительная линия */
+}
+
+.trust-wrapper {
+    display: flex;
+    justify-content: space-between; /* Равномерно распределяем элементы */
+    align-items: center;
+    padding: 32px 0; /* Отступы сверху и снизу */
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.trust-item img {
+    height: 20px; /* Фиксированная высота для логотипов */
+    filter: grayscale(100%); /* Делаем их серыми, как в оригинале */
+    opacity: 0.6;
+}
+
+.trust-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.trust-subtext {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* Секция с логотипами СМИ */
+.press-logos-section {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0; /* Тонкая линия сверху, как на макете */
+}
+
+.press-logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px; /* Расстояние между логотипами */
+    flex-wrap: wrap; /* Чтобы на мобильных они переносились на новую строку */
+}
+
+.press-logo {
+    height: 24px; /* Фиксируем высоту для визуального единообразия */
+    opacity: 0.5;  /* Делаем их приглушенными, как в дизайне */
+    transition: var(--transition);
+    filter: grayscale(100%); /* Делаем их полностью серыми */
+}
+
+.press-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%); /* Цвет возвращается при наведении */
+}
+
+/* Настройка для специфических логотипов (если один шире другого) */
+.press-logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
