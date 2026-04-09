@@ -1,17 +1,46 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 :root {
-    --color-primary-dark: rgba(35, 11, 89, 1);  /* Глубокий фиолетовый для текста */
-    --color-accent: rgba(72, 64, 187, 1);        /* Яркий фиолетовый для кнопок */
-    --color-white: rgba(255, 255, 255, 1);       /* Чистый белый */
+    --color-primary-dark: #230b59;  /* Глубокий фиолетовый для текста */
+    --color-accent: #4840bb;        /* Яркий фиолетовый для кнопок */
+    --color-accent-darker: #3b32a8;  /* Акцентный для :hover */
+    --color-white: #fff;            /* Чистый белый */
+    --color-border-light: rgba(0, 0, 0, 0.05);
     --max-width: 1440px;
     --header-height: 96px;
     --transition: all 0.3s ease;
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     margin: 0;
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: "Roboto", -apple-system, sans-serif;
     color: var(--color-primary-dark);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 .container {
@@ -19,38 +48,23 @@ body {
     max-width: 1312px; /* Тот самый размер из твоего макета */
     margin: 0 auto;    /* Центрирование */
     padding: 0 24px;   /* Безопасные отступы для мобильных */
-    box-sizing: border-box;
+    display: flex;
 }
-
-
 
 .header {
     width: 100%;
-    /* Если макет ограничен 1440px, центрируем саму шапку */
-    max-width: 1440px; 
-    margin: 0 auto;
-    
-    height: 96px;
+    height: var(--header-height);
     background-color: var(--color-white);
     display: flex;
     justify-content: center; /* Центрируем внутренний контейнер */
     align-items: center;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--color-border-light);
 }
 
 .nav-container {
-    width: 100%;
-    /* Ограничиваем контентную область согласно макету */
-    max-width: 1312px; 
-    
-    /* Внутренние отступы для мобильных устройств */
-    padding: 0 24px; 
-    
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
     align-items: center;
-    /* Чтобы padding не увеличивал ширину блока */
-    box-sizing: border-box; 
 }
 
 
@@ -67,7 +81,8 @@ body {
 .nav-item {
     text-decoration: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
+    line-height: 1.25;
     color: var(--color-primary-dark);
     position: relative;
     transition: color 0.2s ease;
@@ -107,9 +122,9 @@ body {
     padding: 10px 24px;
     border-radius: 8px; /* Скругление из макета */
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     font-family: inherit;
     display: inline-flex;
     align-items: center;
@@ -133,109 +148,181 @@ body {
     background-color: var(--color-accent); /* rgba(72, 64, 187, 1) */
     color: var(--color-white); /* rgba(255, 255, 255, 1) */
     border: 1.5px solid var(--color-accent);
+    width: 120px; /* Фиксированная ширина для единообразия */
+    height: 45px; /* Фиксированная высота для единообразия */
 }
 
 .btn-get-started:hover {
-    background-color: #3b32a8; /* Чуть темнее при наведении */
-    border-color: #3b32a8;
+    background-color: var(--color-accent-darker); /* Чуть темнее при наведении */
+    border-color: var(--color-accent-darker);
     box-shadow: 0 4px 12px rgba(72, 64, 187, 0.2); /* Мягкая тень */
 }
 
 .hero-section {
-    width: 100%;
-    /* Если фон секции должен быть серым или белым на весь экран, 
-       стилизуем именно hero-section */
     background-color: var(--color-white);
-}
-.hero-content {
-    flex: 1;
-}
-.hero-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 80px 0; /* Отступы сверху и снизу */
-    gap: 60px;
+    width: 100%;
+    margin-top: 0; /* Убираем верхний отступ от навигационной панели */
 }
 
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Центрирование по вертикали */
+    width: 100%;
+    max-width: 1312px; /* Тот самый размер из макета */
+    min-height: 560px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+}
+
+/* Добавляем обертку для картинки, чтобы flex работал корректно */
 .hero-image {
-    flex: 1;
+    width: 745px; /* Фиксированная ширина по макету */
+    height: 560px; /* Фиксированная высота по макету, чтобы img заполнил блок */
+    display: flex;
+    justify-content: center;
 }
 
 .hero-image img {
     width: 100%;
-    display: block;
-    border-radius: 24px;
+    height: 100%;
+    max-height: 560px;
+    object-fit: cover; /* Фото заполняет блок без искажений */
+    border-radius: 12px; /* Опционально: скругление как в современном дизайне */
 }
 
-
-
-.hero-content-1 {
-    margin-bottom: 32px;
+.hero-content {
+    width: 567px; /* Фиксированная ширина по макету */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 48px;
 }
 
-.hero-content-1 h1 {
-    font-size: 64px;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    margin: 0;
-    max-width: 8em; /* Ограничиваем ширину для естественного переноса */
+.hero-content-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px; /* Оптимальная ширина для чтения, вместо жестких 352px */
 }
 
-.hero-content-2 {
-    margin-bottom: 32px;
+.content-title {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-primary-dark);   /* Темно-фиолетовый как в Wealthfront */
+  margin-bottom: 40px;
 }
 
-.hero-content-2 p {
-    font-size: 20px;
+.content-text {
+    font-size: 16px; /* Немного крупнее для читабельности */
     line-height: 1.5;
-    margin: 0;
-    max-width: 480px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 300px; /* Ограничиваем длину строки */
 }
 
-.hero-content-3 .btn-get-started {
-    font-size: 18px;
-    padding: 14px 32px;
+@media (max-width: 1312px) {
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 24px; /* Верни padding для мобильных */
+    }
+    .hero-image, .hero-content {
+        width: 100%; /* Полная ширина */
+        max-width: 745px; /* Ограничь картинку */
+    }
+    .hero-content {
+        padding-top: 32px; /* Отступ сверху */
+    }
 }
+
+
+/* Стили для секции "Hero"  new-gemini
+
+.hero-container {
+  width: 100%;
+     Ограничиваем контентную область согласно макету     
+    max-width: 1312px; 
+    
+    Внутренние отступы для мобильных устройств 
+    padding: 0 24px;  
+  display: flex;
+  align-items: center;  Центрирование по вертикали 
+  min-height: 560px;   * Высота как на макете 
+  background-color: #fff;
+}
+
+.hero-image {
+  flex: 1;             * Занимает 50% ширины *
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cov4er;   * Важно: фото заполняет блок без искажений *
+}
+
+.hero-content {
+  flex: 1;             * Занимает вторые 50% *
+  padding: 0 80px;     * Внутренние отступы для текста *
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  color: #2b1c50;      * Темно-фиолетовый как в Wealthfront *
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #5d4ed1;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+*/ 
 
 
 .trust-bar {
     width: 100%;
     background-color: var(--color-white);
     border-bottom: 1px solid #f0f0f0; /* Светлая разделительная линия */
+    padding: 32px 0; /* Отступы сверху и снизу */;
 }
 
 .trust-wrapper {
+    width: 100%;
     display: flex;
     justify-content: space-between; /* Равномерно распределяем элементы */
     align-items: center;
     padding: 32px 0; /* Отступы сверху и снизу */
+    flex-wrap: wrap;
+    min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии */
 }
 
 .trust-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
     gap: 4px;
 }
 
 .trust-item img {
-    height: 20px; /* Фиксированная высота для логотипов */
-    filter: grayscale(100%); /* Делаем их серыми, как в оригинале */
-    opacity: 0.6;
+ /* Фиксированная высота для логотипов */
+    
 }
 
-.trust-label {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-primary-dark);
-}
+
 
 .trust-subtext {
+    margin: 0;
     font-size: 12px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: var(--color-primary-dark);
+    letter-spacing: 0px;
 }
 
 
