@@ -13,7 +13,7 @@ html {
     --color-accent: #4840bb;        /* Яркий фиолетовый для кнопок */
     --color-accent-darker: #3b32a8;  /* Акцентный для :hover */
     --color-white: #fff;            /* Чистый белый */
-    --color-border-light: rgba(0, 0, 0, 0.05);
+    --color-border-light:#0000000d;
     --max-width: 1440px;
     --header-height: 96px;
     --transition: all 0.3s ease;
@@ -22,7 +22,7 @@ html {
 @font-face {
     font-family: "Roboto";
     src: url("../fonts/Roboto-Regular.woff2") format("woff2");
-    font-weight: 400;
+    font-weight: Regular;
     font-style: normal;
     font-display: swap;
 }
@@ -150,6 +150,7 @@ body {
     border: 1.5px solid var(--color-accent);
     width: 120px; /* Фиксированная ширина для единообразия */
     height: 45px; /* Фиксированная высота для единообразия */
+    white-space: nowrap;
 }
 
 .btn-get-started:hover {
@@ -215,7 +216,7 @@ body {
 }
 
 .content-text {
-    font-size: 16px; /* Немного крупнее для читабельности */
+    font-size: 15px; /* Немного крупнее для читабельности */
     line-height: 1.5;
     margin-bottom: 40px;
     width: 100%;
@@ -286,23 +287,30 @@ body {
 
 */ 
 
-
+/*
 .trust-bar {
     width: 100%;
     background-color: var(--color-white);
     border-bottom: 1px solid #f0f0f0; /* Светлая разделительная линия */
-    padding: 32px 0; /* Отступы сверху и снизу */;
+     /* Отступы сверху и снизу 
 }
+
+*/
+
+/*
 
 .trust-wrapper {
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Равномерно распределяем элементы */
+    justify-content: space-between; /* Равномерно распределяем элементы 
     align-items: center;
-    padding: 32px 0; /* Отступы сверху и снизу */
+    padding: 32px 0; /* Отступы сверху и снизу 
     flex-wrap: wrap;
-    min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии */
+    min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии 
 }
+*/
+
+/*
 
 .trust-item {
     display: flex;
@@ -312,18 +320,334 @@ body {
 }
 
 .trust-item img {
- /* Фиксированная высота для логотипов */
+ /* Фиксированная высота для логотипов 
     
 }
 
-
-
+*/  
+/*
 .trust-subtext {
     margin: 0;
     font-size: 12px;
     color: var(--color-primary-dark);
     letter-spacing: 0px;
 }
+
+*/
+
+
+
+.trust-bar {
+  display: flex;
+  justify-content: space-between; /* Распределяем элементы по всей ширине */
+  align-items: flex-start;        /* Выравниваем по верхней линии */
+  padding: 40px 0;
+  border-top: 1px solid #eee;    /* Тонкая линия сверху, если нужно */
+  max-width: 100%;              /* Ограничиваем общую ширину */
+  margin: 0 auto;
+}
+.trust-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Равномерно распределяем элементы */
+    align-items: flex-end;
+    padding: 32px 0; /* Отступы сверху и снизу*/ 
+    flex-wrap: wrap;
+    min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии */
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;         /* Текст под логотипом/цифрой */
+  gap: 8px;                       /* Расстояние между элементами внутри */
+   /*flex: 1;                        Позволяет блокам занимать равное место */
+}
+
+/* Стили для логотипов */
+.logo img{
+  height: 25px;                   /* Фиксируем высоту для ровности ряда */
+  width: auto;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Стили для цифр (450K+, $26B+) */
+.stat-value {
+  font-size: 25px;
+  font-weight: 400;
+  color: #230B59;
+}
+
+/* Стили для мелкого текста */
+.stat-label {
+  font-family: "Roboto";;  
+  font-size: 12px;
+  font-weight: 400;
+  color: #230B59;
+  line-height: 1.2;
+  margin: 0;
+} 
+
+
+
+/* Маленькие цифры сносок */
+sup {
+  font-size: 8px;
+  margin-left: 2px;
+}
+
+@media (max-width: 768px) {
+  .trust-bar {
+    flex-wrap: wrap; /* Элементы перепрыгнут на новую строку */
+    gap: 20px;
+  }
+  .trust-item {
+    min-width: 45%; /* По два элемента в ряд на мобильных */
+  }
+}
+
+/* Стили для секции "Features" (три блока с текстом и картинкой) .hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    max-width: 1312px; 
+    min-height: 560px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+}
+
+
+.hero-image {
+    width: 745px; 
+    height: 560px; 
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    max-height: 560px;
+    object-fit: cover; 
+    border-radius: 12px; 
+}
+
+.hero-content {
+    width: 567px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 48px;
+}
+
+.hero-content-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px; 
+}
+ .content-title {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-primary-dark);   
+  margin-bottom: 40px;
+}
+
+.content-text {
+    font-size: 15px; 
+    line-height: 1.5;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 300px; 
+}   */
+
+  /* Секция с фичами (три блока с текстом и картинкой) */
+
+.features-section {
+    
+    background-color: var(--color-white);
+}
+
+.feature-container {
+    display: flex;
+    align-items: center; /* Центрирование по вертикали */
+    width: 100%;
+    max-width: 1312px; /* Тот самый размер из макета */
+    min-height: 750px;
+    
+    padding: 0 24px;  /* Внутренние отступы для мобильных */
+}
+
+.feature-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Центрирование по вертикали */
+    width: 100%;
+    max-width: 1152px;
+    min-height: 750px;
+    height: 750px;
+    
+    /*padding: 0 24px;  Внутренние отступы для мобильных */
+}
+
+
+
+.feature-row .feature-text {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 363px;
+    height: 425px;
+}
+.feature-text h2 {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--color-primary-dark);
+    margin: 0;
+}
+
+.feature-text p {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--color-primary-dark);
+}
+.feature-row .feature-visual {
+    
+    width: 100%; 
+    max-width: 790px;
+    height: 750px; 
+    position: relative; /* КРИТИЧНО: Теперь .card-img будет позиционироваться внутри этого блока */
+    display: flex;
+    align-items: center; /* Центрируем содержимое по вертикали */
+    justify-content: flex-end; /* Прижимаем телефон к правому краю */
+}
+
+
+
+.link-more {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 52px;
+}
+
+.feature-row.reverse 
+{
+    flex-direction: row-reverse;
+   
+}
+.feature-row.reverse .feature-visual {
+    max-width: 760px;   /* Новая ширина */
+    height: 700px;      /* Новая высота */
+    justify-content: flex-start; /* Выравниваем содержимое по левому краю в реверсивном блоке */
+}
+
+/*.feature-row.reverse .phone-img {
+    margin-left: 0;      Сбрасываем правое выравнивание самого изображения 
+    margin-right: auto;
+}*/
+/*.feature-visual .reverse{
+    width: 100%; 
+    max-width: 760px;
+    height: 750px; 
+    position: relative;
+    margin: 0 auto;
+    
+}*/
+
+.phone-img {
+  display: block;
+  width: auto;           /* Ширина будет подбираться автоматически */
+  height: auto;
+  max-width: 480px;        /* Ограничиваем ширину, чтобы телефон не был слишком большим */
+  max-height: 90%;       /* Ограничиваем высоту, чтобы телефон не упирался в края */
+  object-fit: contain;
+  margin-left: auto;
+}
+
+.card-img {
+  position: absolute; /* Позволяет накладывать изображение */
+  top: 56%;           /* Центрируем по вертикали */
+  left: 29%;         /* Центрируем по горизонтали */
+  width: auto;
+  transform: translate(-50%, -50%) rotate(-11deg);
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+}
+
+/*.feature-row .feature-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 363px;
+    height: 425px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.feature-visual {
+    width: 100%;
+    max-width: 363px;
+    height: 750px;
+}
+
+/* Класс для смены порядка колонок 
+.feature-row.reverse {
+    flex-direction: row-reverse;
+}
+
+
+
+.feature-text h2 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--color-primary-dark);
+}
+
+.feature-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    color: var(--color-primary-dark);
+    opacity: 0.8;
+}
+
+.feature-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.floating-img {
+    max-width: 120%; /* Позволяет картинке быть чуть больше контейнера 
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); /
+}
+
+.feature-buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.link-more {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+}*/
+
+
+
 
 
 /* Секция с логотипами СМИ */
