@@ -49,6 +49,8 @@ body {
     margin: 0 auto;    /* Центрирование */
     padding: 0 24px;   /* Безопасные отступы для мобильных */
     display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .header {
@@ -239,101 +241,6 @@ body {
 }
 
 
-/* Стили для секции "Hero"  new-gemini
-
-.hero-container {
-  width: 100%;
-     Ограничиваем контентную область согласно макету     
-    max-width: 1312px; 
-    
-    Внутренние отступы для мобильных устройств 
-    padding: 0 24px;  
-  display: flex;
-  align-items: center;  Центрирование по вертикали 
-  min-height: 560px;   * Высота как на макете 
-  background-color: #fff;
-}
-
-.hero-image {
-  flex: 1;             * Занимает 50% ширины *
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cov4er;   * Важно: фото заполняет блок без искажений *
-}
-
-.hero-content {
-  flex: 1;             * Занимает вторые 50% *
-  padding: 0 80px;     * Внутренние отступы для текста *
-}
-
-.hero-content h1 {
-  font-size: 48px;
-  color: #2b1c50;      * Темно-фиолетовый как в Wealthfront *
-  margin-bottom: 20px;
-}
-
-.btn-primary {
-  display: inline-block;
-  background-color: #5d4ed1;
-  color: white;
-  padding: 15px 30px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-*/ 
-
-/*
-.trust-bar {
-    width: 100%;
-    background-color: var(--color-white);
-    border-bottom: 1px solid #f0f0f0; /* Светлая разделительная линия */
-     /* Отступы сверху и снизу 
-}
-
-*/
-
-/*
-
-.trust-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Равномерно распределяем элементы 
-    align-items: center;
-    padding: 32px 0; /* Отступы сверху и снизу 
-    flex-wrap: wrap;
-    min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии 
-}
-*/
-
-/*
-
-.trust-item {
-    display: flex;
-    flex-direction: column;
-    
-    gap: 4px;
-}
-
-.trust-item img {
- /* Фиксированная высота для логотипов 
-    
-}
-
-*/  
-/*
-.trust-subtext {
-    margin: 0;
-    font-size: 12px;
-    color: var(--color-primary-dark);
-    letter-spacing: 0px;
-}
-
-*/
 
 
 
@@ -406,62 +313,6 @@ sup {
   }
 }
 
-/* Стили для секции "Features" (три блока с текстом и картинкой) .hero-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    width: 100%;
-    max-width: 1312px; 
-    min-height: 560px;
-    margin: 0 auto;
-    background-color: var(--color-white);
-}
-
-
-.hero-image {
-    width: 745px; 
-    height: 560px; 
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    max-height: 560px;
-    object-fit: cover; 
-    border-radius: 12px; 
-}
-
-.hero-content {
-    width: 567px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 48px;
-}
-
-.hero-content-inner {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 480px; 
-}
- .content-title {
-  font-size: 50px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: var(--color-primary-dark);   
-  margin-bottom: 40px;
-}
-
-.content-text {
-    font-size: 15px; 
-    line-height: 1.5;
-    margin-bottom: 40px;
-    width: 100%;
-    max-width: 300px; 
-}   */
 
   /* Секция с фичами (три блока с текстом и картинкой) */
 
@@ -474,10 +325,10 @@ sup {
     display: flex;
     align-items: center; /* Центрирование по вертикали */
     width: 100%;
-    max-width: 1312px; /* Тот самый размер из макета */
+    max-width: 1152px; /* Тот самый размер из макета */
     min-height: 750px;
     
-    padding: 0 24px;  /* Внутренние отступы для мобильных */
+    /*padding: 0 24px;   Внутренние отступы для мобильных */
 }
 
 .feature-row {
@@ -546,23 +397,17 @@ sup {
    
 }
 .feature-row.reverse .feature-visual {
-    max-width: 760px;   /* Новая ширина */
+    max-width: 780px;   /* Новая ширина */
     height: 700px;      /* Новая высота */
     justify-content: flex-start; /* Выравниваем содержимое по левому краю в реверсивном блоке */
 }
-
-/*.feature-row.reverse .phone-img {
-    margin-left: 0;      Сбрасываем правое выравнивание самого изображения 
-    margin-right: auto;
-}*/
-/*.feature-visual .reverse{
-    width: 100%; 
-    max-width: 760px;
-    height: 750px; 
-    position: relative;
-    margin: 0 auto;
+.feature-row.reverse .feature-text {
+    /*align-items: flex-end;  Выравниваем текст по правому краю в реверсивном блоке */
+    max-width: 340px; /* Немного уменьшаем ширину текстового блока, чтобы он не был слишком широким */
     
-}*/
+}
+
+
 
 .phone-img {
   display: block;
@@ -577,74 +422,11 @@ sup {
 .card-img {
   position: absolute; /* Позволяет накладывать изображение */
   top: 56%;           /* Центрируем по вертикали */
-  left: 29%;         /* Центрируем по горизонтали */
+  left: 31%;         /* Центрируем по горизонтали */
   width: auto;
   transform: translate(-50%, -50%) rotate(-11deg);
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
 }
-
-/*.feature-row .feature-text {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 363px;
-    height: 425px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.feature-visual {
-    width: 100%;
-    max-width: 363px;
-    height: 750px;
-}
-
-/* Класс для смены порядка колонок 
-.feature-row.reverse {
-    flex-direction: row-reverse;
-}
-
-
-
-.feature-text h2 {
-    font-size: 48px;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    color: var(--color-primary-dark);
-}
-
-.feature-text p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 32px;
-    color: var(--color-primary-dark);
-    opacity: 0.8;
-}
-
-.feature-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.floating-img {
-    max-width: 120%; /* Позволяет картинке быть чуть больше контейнера 
-    height: auto;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); /
-}
-
-.feature-buttons {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.link-more {
-    color: var(--color-accent);
-    text-decoration: none;
-    font-weight: 600;
-}*/
 
 
 
