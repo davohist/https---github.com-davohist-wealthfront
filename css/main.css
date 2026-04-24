@@ -428,43 +428,307 @@ sup {
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
 }
 
+/* Секция Relax*/
 
-
-
-
-/* Секция с логотипами СМИ */
-.press-logos-section {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 60px 40px;
-    text-align: center;
-    border-top: 1px solid #f0f0f0; /* Тонкая линия сверху, как на макете */
+.relax-section {
+    background-color: var(--color-accent); /* Твой rgba(72, 64, 187, 1) */
+    color: var(--color-white);
+    padding: 100px 0;
+    overflow: hidden; /* Чтобы вылетающие элементы не создавали прокрутку */
 }
 
-.press-logos-container {
+.relax-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.relax-content {
+    flex: 1;
+}
+
+.relax-content h2 {
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 24px;
+    
+}
+
+.relax-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+    max-width: 480px;
+}
+
+/* Графическая часть */
+.relax-visual {
+    flex: 1.2;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Планшетная и мобильная версия */
+@media (max-width: 1100px) {
+    .relax-wrapper {
+        flex-direction: column; /* Текст теперь сверху, графика снизу */
+        text-align: center;
+        gap: 60px;
+    }
+
+    .relax-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .relax-content p {
+        max-width: 100%; /* Текст может занимать всю ширину */
+    }
+
+    .relax-visual {
+        justify-content: center; /* Центрируем графику по горизонтали */
+        width: 100%;
+    }
+}
+
+/* Мобильная версия (iPhone и подобные) */
+@media (max-width: 600px) {
+    .relax-content h2 {
+        font-size: 36px; /* Уменьшаем заголовок, чтобы он не разбивался на слоги */
+    }
+
+    .main-card {
+        width: 100%; /* Карточка занимает всю ширину контейнера */
+        height: auto;
+        min-height: 350px;
+        padding: 20px;
+    }
+
+    .total-amount {
+        font-size: 32px;
+    }
+
+    .accounts-stack {
+        position: relative; /* Убираем абсолютное позиционирование */
+        right: 0;           /* Сбрасываем вылет за края */
+        bottom: 0;
+        margin-top: -100px; /* Накладываем плашки на график снизу */
+        align-items: center;
+        width: 100%;
+    }
+
+    .account-item {
+        width: 90%; /* Плашки почти во всю ширину */
+        max-width: 320px;
+    }
+}
+
+ /* Секция с отзывами */
+
+.testimonials-section {
+    background-color: var(--color-primary-dark); /* Темно-фиолетовый фон */
+    padding-bottom: 100px;
+    /* Оставляем место внизу для "вылета" карточек */
+}
+
+.testimonials-grid {
+    display: flex;
+    gap: 24px;
+    /* Сдвигаем всю сетку вниз, чтобы она наполовину вышла за пределы секции */
+    transform: translateY(150px); 
+}
+
+.testimonial-card {
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 4px; /* На макете углы почти острые */
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.testimonial-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 24px;
+}
+
+.testimonial-text {
+    font-size: 24px;
+    line-height: 1.3;
+    color: var(--color-primary-dark);
+    margin: 0;
+    flex-grow: 1; /* Толкает имя автора вниз */
+}
+
+.testimonial-text strong {
+    font-weight: 700;
+}
+
+.testimonial-author {
+    font-style: normal;
+    font-size: 14px;
+    color: #666;
+    margin-top: 30px;
+}
+
+@media (max-width: 992px) {
+    .testimonials-grid {
+        flex-direction: column;
+        transform: translateY(50px); /* Уменьшаем сдвиг на мобильных */
+        padding: 0 20px;
+    }
+    
+    .testimonial-card {
+        min-height: auto;
+    }
+}
+
+/* секция — CTA (Call to Action) */
+
+.cta-section {
+    padding: 120px 0 80px; /* Большой отступ сверху, чтобы отделить от карточек отзывов */
+    text-align: center;
+    background-color: var(--color-white);
+}
+
+.cta-inner {
+    max-width: 1152px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для иллюстрации */
+.cta-illustration {
+    margin-bottom: 60px;
+}
+
+.cta-illustration img {
+    max-width: 400px; /* Ограничиваем размер картинки */
+    height: auto;
+}
+
+/* Контентная часть */
+.cta-content h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--color-primary-dark);
+    max-width: 800px; /* Чтобы заголовок не растягивался в одну длинную строку */
+    margin: 0 auto 40px;
+    font-weight: 500;
+}
+
+.cta-content h2 strong {
+    font-weight: 600px;
+}
+
+/* Логотипы прессы */
+.featured-in {
+    margin-top: 100px;
+    border-top: 1px solid #eee;  /*Тонкая линия разделения */
+    padding-top: 40px;
+}
+
+.featured-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.press-logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px; /* Расстояние между логотипами */
-    flex-wrap: wrap; /* Чтобы на мобильных они переносились на новую строку */
+    gap: 50px;
+    flex-wrap: wrap; 
 }
 
-.press-logo {
-    height: 24px; /* Фиксируем высоту для визуального единообразия */
-    opacity: 0.5;  /* Делаем их приглушенными, как в дизайне */
-    transition: var(--transition);
-    filter: grayscale(100%); /* Делаем их полностью серыми */
+.press-logos img {
+    height: 24px;  /*Выравниваем все логотипы по одной высоте*/ 
+    filter: grayscale(100%); 
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-.press-logo:hover {
+.press-logos img:hover {
     opacity: 1;
-    filter: grayscale(0%); /* Цвет возвращается при наведении */
 }
 
-/* Настройка для специфических логотипов (если один шире другого) */
-.press-logo img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
+
+
+
+/* Подвал */
+
+.footer {
+    background-color: #0b0e22; /* Очень темный синий из макета */
+    color: #ffffff;
+    padding: 80px 0 40px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.footer-logo {
+    height: 24px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 80px; /* Расстояние между колонками */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-column a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.footer-column a:hover {
+    opacity: 1;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(224, 213, 213, 0.742);
+    margin-bottom: 40px;
+}
+
+/* Юридический текст */
+.footer-bottom {
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5); /* Приглушенный цвет */
+}
+
+.footer-bottom p {
+    margin-bottom: 20px;
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 12px;
 }
