@@ -22,7 +22,7 @@ html {
 @font-face {
     font-family: "Roboto";
     src: url("../fonts/Roboto-Regular.woff2") format("woff2");
-    font-weight: Regular;
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
@@ -36,7 +36,10 @@ html {
 }
 
 body {
-    margin: 0;
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
     font-family: "Roboto", -apple-system, sans-serif;
     color: var(--color-primary-dark);
     -webkit-font-smoothing: antialiased;
@@ -47,10 +50,10 @@ body {
     width: 100%;
     max-width: 1312px; /* Тот самый размер из твоего макета */
     margin: 0 auto;    /* Центрирование */
-    padding: 0 24px;   /* Безопасные отступы для мобильных */
-    display: flex;
+    padding: 0 24px;    /*Безопасные отступы для мобильных*/  */
+    /*display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center*/
 }
 
 .header {
@@ -66,9 +69,8 @@ body {
 .nav-container {
    display: flex;
    justify-content: space-between;
-    align-items: center;
+   align-items: center;
 }
-
 
 /* Стили для списка ссылок */
 .nav-menu {
@@ -171,8 +173,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Центрирование по вертикали */
-    width: 100%;
-    max-width: 1312px; /* Тот самый размер из макета */
+    /*width: 100%;
+    max-width: 1312px;  Тот самый размер из макета */
     min-height: 560px;
     margin: 0 auto;
     background-color: var(--color-white);
@@ -209,7 +211,7 @@ body {
     max-width: 480px; /* Оптимальная ширина для чтения, вместо жестких 352px */
 }
 
-.content-title {
+.content-title h1 {
   font-size: 50px;
   font-weight: 400;
   line-height: 1.2;
@@ -239,9 +241,6 @@ body {
         padding-top: 32px; /* Отступ сверху */
     }
 }
-
-
-
 
 
 .trust-bar {
@@ -625,11 +624,11 @@ sup {
     color: var(--color-primary-dark);
     max-width: 800px; /* Чтобы заголовок не растягивался в одну длинную строку */
     margin: 0 auto 40px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .cta-content h2 strong {
-    font-weight: 600px;
+    font-weight: 600;
 }
 
 /* Логотипы прессы */
@@ -657,7 +656,7 @@ sup {
 }
 
 .press-logos img {
-    height: 24px;  /*Выравниваем все логотипы по одной высоте*/ 
+    /* height: 24px;  Выравниваем все логотипы по одной высоте  */
     filter: grayscale(100%); 
     opacity: 0.7;
     transition: opacity 0.3s ease;
@@ -667,15 +666,19 @@ sup {
     opacity: 1;
 }
 
-
-
-
 /* Подвал */
 
 .footer {
     background-color: #0b0e22; /* Очень темный синий из макета */
     color: #ffffff;
     padding: 80px 0 40px;
+}
+
+.footer-inner {
+    max-width: 1344px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-top {
