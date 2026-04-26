@@ -48,12 +48,9 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1312px; /* Тот самый размер из твоего макета */
-    margin: 0 auto;    /* Центрирование */
-    padding: 0 24px;    /* Безопасные отступы для мобильных */
-    /*display: flex;
-    justify-content: center;
-    align-items: center*/
+    max-width: 1312px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .header {
@@ -281,7 +278,7 @@ body {
 
 /* Стили для мелкого текста */
 .stat-label {
-  font-family: "Roboto";;  
+  font-family: "Roboto";
   font-size: 12px;
   font-weight: 400;
   /* color: #230B59; */
@@ -328,7 +325,7 @@ sup {
     width: 100%;
     max-width: 1152px;
     min-height: 750px;
-    
+    height: 750px;
     
     /*padding: 0 24px;  Внутренние отступы для мобильных */
 }
@@ -384,7 +381,7 @@ sup {
 
 .feature-row.reverse .feature-visual {
     max-width: 760px;   /* Новая ширина */
-    min-height: 700px;      /* Новая высота */
+    height: 700px;      /* Новая высота */
     justify-content: flex-start; /* Выравниваем содержимое по левому краю в реверсивном блоке */
 }
 .feature-row.reverse .feature-text {
@@ -459,7 +456,7 @@ sup {
 /* Планшетная и мобильная версия */
 @media (max-width: 1100px) {
     .relax-wrapper {
-        flex-direction: column; /* Текст теперь сверху, графика снизу */
+        flex-direction: column;
         text-align: center;
         gap: 60px;
     }
@@ -471,11 +468,11 @@ sup {
     }
 
     .relax-content p {
-        max-width: 100%; /* Текст может занимать всю ширину */
+        max-width: 100%;
     }
 
     .relax-visual {
-        justify-content: center; /* Центрируем графику по горизонтали */
+        justify-content: center;
         width: 100%;
     }
 }
@@ -555,7 +552,7 @@ sup {
 }
 
 .testimonial-text strong {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .testimonial-author {
