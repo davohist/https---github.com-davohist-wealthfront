@@ -50,7 +50,7 @@ body {
     width: 100%;
     max-width: 1312px; /* Тот самый размер из твоего макета */
     margin: 0 auto;    /* Центрирование */
-    padding: 0 24px;    /*Безопасные отступы для мобильных*/  */
+    padding: 0 24px;    /* Безопасные отступы для мобильных */
     /*display: flex;
     justify-content: center;
     align-items: center*/
@@ -244,20 +244,16 @@ body {
 
 
 .trust-bar {
-  display: flex;
-  justify-content: space-between; /* Распределяем элементы по всей ширине */
-  align-items: flex-start;        /* Выравниваем по верхней линии */
-  padding: 40px 0;
   border-top: 1px solid #eee;    /* Тонкая линия сверху, если нужно */
-  max-width: 100%;              /* Ограничиваем общую ширину */
-  margin: 0 auto;
+  width: 100%;              /* Ограничиваем общую ширину */
 }
 .trust-wrapper {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between; /* Равномерно распределяем элементы */
     align-items: flex-end;
-    padding: 32px 0; /* Отступы сверху и снизу*/ 
+    /*margin: 0 auto;  Центрируем внутри контейнера */
+    padding: 32px 24px; /* Отступы сверху и снизу*/ 
     flex-wrap: wrap;
     min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии */
 }
@@ -266,7 +262,6 @@ body {
   display: flex;
   flex-direction: column;         /* Текст под логотипом/цифрой */
   gap: 8px;                       /* Расстояние между элементами внутри */
-   /*flex: 1;                        Позволяет блокам занимать равное место */
 }
 
 /* Стили для логотипов */
@@ -281,7 +276,7 @@ body {
 .stat-value {
   font-size: 25px;
   font-weight: 400;
-  color: #230B59;
+  /* color: #230B59; */
 }
 
 /* Стили для мелкого текста */
@@ -289,12 +284,10 @@ body {
   font-family: "Roboto";;  
   font-size: 12px;
   font-weight: 400;
-  color: #230B59;
+  /* color: #230B59; */
   line-height: 1.2;
   margin: 0;
 } 
-
-
 
 /* Маленькие цифры сносок */
 sup {
@@ -316,7 +309,6 @@ sup {
   /* Секция с фичами (три блока с текстом и картинкой) */
 
 .features-section {
-    
     background-color: var(--color-white);
 }
 
@@ -326,8 +318,7 @@ sup {
     width: 100%;
     max-width: 1152px; /* Тот самый размер из макета */
     min-height: 750px;
-    
-    /*padding: 0 24px;   Внутренние отступы для мобильных */
+    padding: 0;   /*Внутренние отступы для мобильных cancel*/
 }
 
 .feature-row {
@@ -337,7 +328,7 @@ sup {
     width: 100%;
     max-width: 1152px;
     min-height: 750px;
-    height: 750px;
+    
     
     /*padding: 0 24px;  Внутренние отступы для мобильных */
 }
@@ -352,7 +343,7 @@ sup {
     justify-content: space-between;
     width: 100%;
     max-width: 363px;
-    height: 425px;
+    min-height: 425px;
 }
 .feature-text h2 {
     font-size: 56px;
@@ -370,17 +361,14 @@ sup {
     color: var(--color-primary-dark);
 }
 .feature-row .feature-visual {
-    
     width: 100%; 
     max-width: 790px;
-    height: 750px; 
+    min-height: 750px;
     position: relative; /* КРИТИЧНО: Теперь .card-img будет позиционироваться внутри этого блока */
     display: flex;
     align-items: center; /* Центрируем содержимое по вертикали */
     justify-content: flex-end; /* Прижимаем телефон к правому краю */
 }
-
-
 
 .link-more {
     color: var(--color-accent);
@@ -390,23 +378,19 @@ sup {
     margin-left: 52px;
 }
 
-.feature-row.reverse 
-{
+.feature-row.reverse {
     flex-direction: row-reverse;
-   
 }
+
 .feature-row.reverse .feature-visual {
-    max-width: 780px;   /* Новая ширина */
-    height: 700px;      /* Новая высота */
+    max-width: 760px;   /* Новая ширина */
+    min-height: 700px;      /* Новая высота */
     justify-content: flex-start; /* Выравниваем содержимое по левому краю в реверсивном блоке */
 }
 .feature-row.reverse .feature-text {
-    /*align-items: flex-end;  Выравниваем текст по правому краю в реверсивном блоке */
-    max-width: 340px; /* Немного уменьшаем ширину текстового блока, чтобы он не был слишком широким */
-    
+    align-items: flex-start;  /*Выравниваем текст по правому краю в реверсивном блоке*/
+    max-width: 340px; /* Немного уменьшаем ширину текстового блока, чтобы он не был слишком широким */    
 }
-
-
 
 .phone-img {
   display: block;
@@ -421,7 +405,7 @@ sup {
 .card-img {
   position: absolute; /* Позволяет накладывать изображение */
   top: 56%;           /* Центрируем по вертикали */
-  left: 31%;         /* Центрируем по горизонтали */
+  left: 32%;         /* Центрируем по горизонтали */
   width: auto;
   transform: translate(-50%, -50%) rotate(-11deg);
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
@@ -432,13 +416,14 @@ sup {
 .relax-section {
     background-color: var(--color-accent); /* Твой rgba(72, 64, 187, 1) */
     color: var(--color-white);
-    padding: 100px 0;
+    min-height: 576px;
     overflow: hidden; /* Чтобы вылетающие элементы не создавали прокрутку */
 }
 
 .relax-wrapper {
     display: flex;
     align-items: center;
+    min-height: 576px;
     gap: 80px;
 }
 
@@ -467,6 +452,8 @@ sup {
     position: relative;
     display: flex;
     justify-content: flex-end;
+    align-self: flex-end;
+    align-items: flex-end; /* Добавьте это для прижимания к низу */
 }
 
 /* Планшетная и мобильная версия */
@@ -568,7 +555,7 @@ sup {
 }
 
 .testimonial-text strong {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .testimonial-author {
@@ -628,7 +615,7 @@ sup {
 }
 
 .cta-content h2 strong {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* Логотипы прессы */
