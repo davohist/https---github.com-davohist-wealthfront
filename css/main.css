@@ -46,6 +46,12 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 0; /* Убираем отступы между секциями, если они есть */
+}
+
 .container {
     width: 100%;
     max-width: 1312px;
@@ -57,20 +63,20 @@ body {
     width: 100%;
     height: var(--header-height);
     background-color: var(--color-white);
-    display: flex;
-    justify-content: center; /* Центрируем внутренний контейнер */
-    align-items: center;
+    display: grid;
+    align-content: center;
     border-bottom: 1px solid var(--color-border-light);
 }
 
 .nav-container {
-   display: flex;
-   justify-content: space-between;
+   display: grid;
+   grid-template-columns: auto 1fr auto;
    align-items: center;
 }
 
 /* Стили для списка ссылок */
 .nav-menu {
+    justify-self: center;
     display: flex;
     list-style: none; /* Убираем маркеры (точки) */
     margin: 0;
@@ -167,11 +173,9 @@ body {
 }
 
 .hero-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Центрирование по вертикали */
-    /*width: 100%;
-    max-width: 1312px;  Тот самый размер из макета */
+    display: grid;
+    grid-template-columns: 745px 567px;
+    align-items: center;
     min-height: 560px;
     margin: 0 auto;
     background-color: var(--color-white);
@@ -194,7 +198,6 @@ body {
 }
 
 .hero-content {
-    width: 567px; /* Фиксированная ширина по макету */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -226,7 +229,7 @@ body {
 
 @media (max-width: 1312px) {
     .hero-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         align-items: center;
         padding: 0 24px; /* Верни padding для мобильных */
     }
@@ -245,13 +248,11 @@ body {
   width: 100%;              /* Ограничиваем общую ширину */
 }
 .trust-wrapper {
-    /* width: 100%; */
-    display: flex;
-    justify-content: space-between; /* Равномерно распределяем элементы */
-    align-items: flex-end;
-    /*margin: 0 auto;  Центрируем внутри контейнера */
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    justify-content: space-between;
+    align-items: end;
     padding: 32px 24px; /* Отступы сверху и снизу*/ 
-    flex-wrap: wrap;
     min-height: 71px; /* Фиксированная высота для всех элементов, чтобы они были на одной линии */
 }
 
@@ -294,11 +295,14 @@ sup {
 
 @media (max-width: 768px) {
   .trust-bar {
-    flex-wrap: wrap; /* Элементы перепрыгнут на новую строку */
     gap: 20px;
   }
   .trust-item {
     min-width: 45%; /* По два элемента в ряд на мобильных */
+  }
+  .trust-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }
 
@@ -325,12 +329,9 @@ sup {
     width: 100%;
     max-width: 1152px;
     min-height: 750px;
-    height: 750px;
     
     /*padding: 0 24px;  Внутренние отступы для мобильных */
 }
-
-
 
 .feature-row .feature-text {
     margin: 0;
@@ -380,8 +381,10 @@ sup {
 }
 
 .feature-row.reverse .feature-visual {
-    max-width: 760px;   /* Новая ширина */
+    max-width: 790px;
     height: 700px;      /* Новая высота */
+    display: flex;
+    align-items: center;
     justify-content: flex-start; /* Выравниваем содержимое по левому краю в реверсивном блоке */
 }
 .feature-row.reverse .feature-text {
@@ -418,7 +421,8 @@ sup {
 }
 
 .relax-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
     align-items: center;
     min-height: 576px;
     gap: 80px;
@@ -456,7 +460,7 @@ sup {
 /* Планшетная и мобильная версия */
 @media (max-width: 1100px) {
     .relax-wrapper {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 60px;
     }
@@ -518,7 +522,8 @@ sup {
 }
 
 .testimonials-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     /* Сдвигаем всю сетку вниз, чтобы она наполовину вышла за пределы секции */
     transform: translateY(150px); 
@@ -564,7 +569,7 @@ sup {
 
 @media (max-width: 992px) {
     .testimonials-grid {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         transform: translateY(50px); /* Уменьшаем сдвиг на мобильных */
         padding: 0 20px;
     }
@@ -658,61 +663,85 @@ sup {
     padding: 80px 0 40px;
 }
 
+/* Центральный контейнер, задающий 12-колоночную сетку */
 .footer-inner {
-    max-width: 1344px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+  display: grid;
+  /* 12 равных колонок + боковые отступы (минимальные 20px, максимальные 1fr) */
+  grid-template-columns: minmax(20px, 1fr) repeat(12, minmax(0, 90px)) minmax(20px, 1fr);
+  gap: 20px;
 }
 
+/* Направляем контент строго внутрь 12 колонок (со 2-й по 14-ю линию) */
+.footer-top,
+.footer-divider,
+.footer-bottom {
+  grid-column: 2 / 14;
+}
+
+/* --- ВЕРХНЯЯ ЧАСТЬ --- */
 .footer-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 60px;
+  display: grid;
+  /* Внутри блока тоже делаем 12 колонок для точного совпадения с макетом */
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  align-items: start;
 }
 
+/* Логотип занимает первые 4 колонки */
 .footer-logo {
-    height: 24px;
+  grid-column: 1 / 5;
 }
 
+
+
+/* Навигация занимает оставшиеся 8 колонок справа (с 5 по 13 линию) */
 .footer-nav {
-    display: flex;
-    gap: 80px; /* Расстояние между колонками */
+  grid-column: 5 / 13;
+  display: grid;
+  /* Делим эти 8 колонок на 4 равных столбца для ссылок */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
+/* Стили для колонок со ссылками */
 .footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Отступы между ссылками по вертикали */
 }
 
 .footer-column a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    opacity: 0.8;
-    transition: opacity 0.2s;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.8;
+  font-size: 14px;
+  transition: opacity 0.2s;
 }
 
 .footer-column a:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
+/* Разделительная линия */
 .footer-divider {
-    border: 0;
-    border-top: 1px solid rgba(224, 213, 213, 0.742);
-    margin-bottom: 40px;
+  border: none;
+  border-top: 1px solid #ffffff;  
+  margin: 40px 0;
+  width: 100%;
 }
 
-/* Юридический текст */
+/* --- НИЖНЯЯ ЧАСТЬ (Юридический текст) --- */
 .footer-bottom {
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.5); /* Приглушенный цвет */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .footer-bottom p {
-    margin-bottom: 20px;
+  font-size: 11px;
+  line-height: 1.6;
+  opacity: 0.5; /* Делаем текст приглушенным, как в макете */
+  margin: 0;
 }
 
 .copyright {
