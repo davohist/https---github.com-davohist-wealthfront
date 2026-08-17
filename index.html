@@ -16,26 +16,6 @@
               <img src="img/logosvg.svg" alt="Логотип" />
             </a>
           </div>
-          <!-- Кнопка-переключатель 
-          <button  
-            type="button"  
-            class="menu-toggle"  
-            id="menu-toggle"  
-            aria-expanded="false"  
-            aria-controls="main-nav" 
-            aria-label="Открыть меню"> 
-            <span class="hamburger-bar"></span> 
-            <span class="hamburger-bar"></span> 
-            <span class="hamburger-bar"></span> 
-          </button> -->
-          <!-- Выпадающее меню 
-          <nav id="main-nav" class="nav-menu" aria-label="Основное меню" hidden>
-            <ul class="nav-list">
-              <li><a href="#home">Главная</a></li>
-              <li><a href="#about">О нас</a></li>
-              <li><a href="#services">Услуги</a></li>
-              <li><a href="#contacts">Контакты</a></li>
-            </ul>-->
             <ul class="nav-menu">
               <li><a href="#" class="nav-item">Invest</a></li>
               <li><a href="#" class="nav-item">Cash</a></li>
@@ -46,8 +26,15 @@
               <button class="btn-nav btn-login">Log in</button>
               <button class="btn-nav btn-get-started">Get started</button>
             </div>
-          <!-- </nav> -->
+          
+           <!-- Кнопка бургера (три полоски) -->
+          <button class="burger-btn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </nav>
+        
       </header>
   
       <main>
@@ -71,7 +58,7 @@
         </section>
   
         <section class="trust-bar">
-          <div class="container trust-wrapper">
+            <div class="container trust-wrapper">
               <div class="trust-item">
                 <img
                   class="logo"
@@ -161,15 +148,16 @@
                 </div>
                 <div class="feature-visual">
                   <img
-                    src="img/smartphone-2.png"
-                    alt="Wealthfront Card"
-                    class="phone-img"
-                  />
-                  <img
                     src="img/visacard.png"
                     alt="Wealthfront Card"
                     class="card-img"
                   />
+                  <img
+                    src="img/smartphone-2.png"
+                    alt="Wealthfront Card"
+                    class="phone-img"
+                  />
+                  
                 </div>
               </div>
             </div>
@@ -312,6 +300,7 @@
         <!-- </div> -->
       </footer>
     </div>
+    <script src="js/menu.js"></script>
   </body>
 </html>
 
