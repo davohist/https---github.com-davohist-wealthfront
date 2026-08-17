@@ -54,11 +54,11 @@ body {
   display: grid;
   width: 100%;
   /* max-width: 1312px; */
-  /*padding-inline: 20px;  Безопасные отступы от краев экрана на мобильных устройствах */
+  /* padding-inline: 20px;  Безопасные отступы от краев экрана на мобильных устройствах */
   grid-template-rows: auto;
   gap: 0;
   /* Убираем отступы между секциями, если они есть */
-  /* margin-inline: auto; */
+  margin-inline: auto;
   /* Главные свойства для вертикального центрирования: */
   min-height: 100vh;
   /* Растягивает контейнер минимум на 100% высоты экрана */
@@ -1072,14 +1072,15 @@ sup {
     font-size: 15px;
   }
 
-  .feature-visual {
-    display: none !important; /* Скрываем визуальный блок на маленьких экранах */
+  /* .feature-visual {
+    display: none; 
+  } */
+  
+  .feature-row .feature-visual,
+  .feature-row.reverse .feature-visual {
+    display: none;
   }
-
-  .featured-in {
-    margin-top: 40px;
-  }
-
+  
   .relax-content h2 {
     font-size: 34px;
   }
@@ -1097,7 +1098,9 @@ sup {
     font-size: 30px;
   }
 
-  
+  .featured-in {
+    margin-top: 40px;
+  }
 
   .press-logos {
     gap: 20px;
@@ -1150,8 +1153,7 @@ sup {
 
 }
 
-
-/* @media (max-width: 480px) {
+ @media (max-width: 480px) {
   .header {
     height: auto;
     padding: 16px 0;
@@ -1198,13 +1200,13 @@ sup {
   .footer-inner {
     padding: 0;
   }
-} */
+} 
 
 
-/* Бургер меню 
+/* Бургер меню */
 
 
-.menu-toggle-checkbox {
+/* .menu-toggle-checkbox { 
   display: none;
 }
 
@@ -1231,13 +1233,6 @@ sup {
 .menu-toggle span+span {
   margin-top: 6px;
 }
-
-@media (max-width: 768px) {
-  .nav-container {
-    grid-template-columns: auto auto;
-    align-items: center;
-    gap: 12px;
-  }
 
   .menu-toggle {
     display: inline-flex;
@@ -1302,4 +1297,4 @@ sup {
   .menu-toggle-checkbox:checked+.menu-toggle span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
   }
-}*/
+ */
