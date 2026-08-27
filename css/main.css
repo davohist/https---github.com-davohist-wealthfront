@@ -43,18 +43,24 @@ body {
   max-width: var(--max-width);
   width: 100%;
   margin-inline: auto;
-  padding: 0 24px;
+  /* padding: 0 24px; */
   font-family: "Roboto", -apple-system, sans-serif;
   color: var(--color-primary-dark);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+main {
+  flex: 1;
+  min-width: 0;
+}
+
 .grid-container {
   display: grid;
   width: 100%;
-  /* max-width: 1312px; */
-  /* padding-inline: 20px;  Безопасные отступы от краев экрана на мобильных устройствах */
+  max-width: 1312px;
+  grid-template-columns: minmax(0, 1fr);
+  /*padding-inline: 24px;  Безопасные отступы от краев экрана на мобильных устройствах*/
   grid-template-rows: auto;
   gap: 0;
   /* Убираем отступы между секциями, если они есть */
@@ -116,7 +122,6 @@ body {
 /* Эффект при наведении */
 .nav-item:hover {
   color: var(--color-accent);
-  /* rgba(72, 64, 187, 1) */
 }
 
 /* Опционально: подчеркивание, которое появляется плавно */
@@ -133,6 +138,10 @@ body {
 
 .nav-item:hover::after {
   width: 100%;
+}
+
+.mobile-auth {
+  display: none;
 }
 
 /* Контейнер для кнопок */
@@ -195,38 +204,63 @@ body {
 }
 
 .burger-btn {
-  display: none; /* Скрываем бургер на десктопе */
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Чтобы кнопка была поверх открытого меню */
+}
+
+.burger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary-dark);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Анимация превращения иконки в крестик (при классе .active) */
+.burger-btn.active .burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger-btn.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.active .burger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .hero-section {
   background-color: var(--color-white);
-  width: 100%;
-  margin-top: 0;
-  /* Убираем верхний отступ от навигационной панели */
 }
 
 .hero-container {
   display: grid;
-  grid-template-columns: 745px 567px;
+  grid-template-columns: 1.3fr 1fr;
   align-items: center;
   min-height: 560px;
+  max-width: 1312px;
+  gap: 48px;
+  width: 100%;
   margin: 0 auto;
   background-color: var(--color-white);
 }
 
 /* Добавляем обертку для картинки, чтобы flex работал корректно */
 .hero-image {
-  width: 745px;
-  /* Фиксированная ширина по макету */
-  height: 560px;
-  /* Фиксированная высота по макету, чтобы img заполнил блок */
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .hero-image img {
+  display: block; /*убирает лишний отступ у картинок*/
   width: 100%;
-  height: 100%;
+  height: auto;
   max-height: 560px;
   object-fit: cover;
   /* Фото заполняет блок без искажений */
@@ -238,14 +272,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 48px;
+  /* margin-left: 48px; */
 }
 
 .hero-content-inner {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 480px;
+  max-width: 352px;
   /* Оптимальная ширина для чтения, вместо жестких 352px */
 }
 
@@ -272,8 +306,6 @@ body {
 .trust-bar {
   border-top: 1px solid #eee;
   /* Тонкая линия сверху, если нужно */
-  width: 100%;
-  /* Ограничиваем общую ширину */
 }
 
 .trust-wrapper {
@@ -347,32 +379,37 @@ sup {
   width: 100%;
   max-width: 1152px;
   /* Тот самый размер из макета */
-  min-height: 750px;
-  padding: 0;
-  /*Внутренние отступы для мобильных cancel*/
+  /* min-height: 750px; */
+  padding: 0 24px;
+  
 }
 
 .feature-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  min-width: 0;
   /* Центрирование по вертикали */
   width: 100%;
   max-width: 1152px;
-  min-height: 750px;
+  /* min-height: 750px; */
 
   /*padding: 0 24px;  Внутренние отступы для мобильных */
 }
 
 .feature-row .feature-text {
-  margin: 0;
+  /* margin: 0; */
+  /* margin-left: 24px; */
+  flex: 0 1 352px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-  max-width: 363px;
-  min-height: 425px;
+  max-width: 352px;
+  /* min-height: 425px; */
 }
 
 .feature-text h2 {
@@ -392,9 +429,11 @@ sup {
 }
 
 .feature-row .feature-visual {
+  flex: 1 1 0;
+  min-width: 0;
   width: 100%;
   max-width: 790px;
-  min-height: 750px;
+  /* min-height: 750px; */
   position: relative;
   /* КРИТИЧНО: Теперь .card-img будет позиционироваться внутри этого блока */
   display: flex;
@@ -402,6 +441,14 @@ sup {
   /* Центрируем содержимое по вертикали */
   justify-content: flex-end;
   /* Прижимаем телефон к правому краю */
+}
+
+.floating-img {
+  display: block;
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  object-fit: contain;
 }
 
 .link-more {
@@ -417,8 +464,9 @@ sup {
 }
 
 .feature-row.reverse .feature-visual {
+  width: 100%;
   max-width: 790px;
-  height: 700px;
+  height: auto;
   /* Новая высота */
   display: flex;
   align-items: center;
@@ -426,24 +474,34 @@ sup {
   /* Выравниваем содержимое по левому краю в реверсивном блоке */
 }
 
+.visual-wrapper {
+  /* margin-left: 24px; */
+  position: relative;
+  width: 100%;
+  max-width: 790px;
+  aspect-ratio: 790 / 700;
+}
+
 .feature-row.reverse .feature-text {
+  /* margin-right: 24px; */
   align-items: flex-start;
   /*Выравниваем текст по правому краю в реверсивном блоке*/
   max-width: 340px;
   /* Немного уменьшаем ширину текстового блока, чтобы он не был слишком широким */
 }
 
+
+
 .phone-img {
+  position: absolute;
+  top: 50%;
+  right: 0;
   display: block;
-  width: auto;
+  width: 40.5%;
   /* Ширина будет подбираться автоматически */
   height: auto;
-  max-width: 480px;
-  /* Ограничиваем ширину, чтобы телефон не был слишком большим */
-  max-height: 90%;
-  /* Ограничиваем высоту, чтобы телефон не упирался в края */
   object-fit: contain;
-  margin-left: auto;
+  transform: translateY(-50%);
 }
 
 .card-img {
@@ -453,7 +511,7 @@ sup {
   /* Центрируем по вертикали */
   left: 32%;
   /* Центрируем по горизонтали */
-  width: auto;
+  width: 60%;
   transform: translate(-50%, -50%) rotate(-11deg);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
@@ -505,6 +563,14 @@ sup {
   align-self: flex-end;
   align-items: flex-end;
   /* Добавьте это для прижимания к низу */
+}
+
+.relax-visual img {
+  max-width: 100%;
+  height: auto;
+  /* Чтобы картинка не растягивалась */
+  object-fit: contain;
+  /* Сохраняем пропорции */
 }
 
 /* Секция с отзывами */
@@ -659,7 +725,7 @@ sup {
   
   max-width: 1200px; /* Ограничиваем максимальную ширину */
   margin: 0 auto;    /* Центрируем контейнер по горизонтали */
-  padding: 0 20px;   /* Боковые безопасные отступы (заменяют трюк с minmax) */
+  padding: 0 24px;   /* Боковые безопасные отступы (заменяют трюк с minmax) */
   
   width: 100%;
   box-sizing: border-box;
@@ -789,7 +855,6 @@ sup {
   }
 
   .hero-content {
-    /* УБРАЛИ margin-left: 0 и бесполезный align-items */
     text-align: center;
   }
 
@@ -848,6 +913,30 @@ sup {
     gap: 40px;
   }
 
+  .feature-row .feature-text {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .feature-row .feature-visual {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .feature-row.reverse .feature-text {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .feature-row.reverse .feature-visual {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 760px;
+  }
+
   .feature-buttons {
     display: flex;
     align-items: center;
@@ -874,20 +963,24 @@ sup {
   }
 
   .card-img {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0 auto 20px;
-    width: 80%;
+    position: absolute;
+    top: 56%;
+    left: 32%;
+    margin: 0;
+    width: auto;
     max-width: 420px;
-    transform: translate(7.5%, 16.5%) rotate(-11deg);
+    transform: translate(-46%, -48%) rotate(-11deg);
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
   }
 
   .phone-img {
+    position: absolute;
+    top: 50%;
+    right: 0;
     max-width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: 0;
+    transform: translateY(-50%);
   }
 
   .relax-wrapper {
@@ -948,7 +1041,7 @@ sup {
   }
 
   .cta-illustration img {
-    max-width: 340px;
+    max-width: 100%;
   }
 
   .cta-content h2 {
@@ -982,23 +1075,6 @@ sup {
     gap: 24px 20px;
   }
 
-  /* .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-logo {
-    grid-column: auto;
-  }
-
-  .footer-nav {
-    grid-column: auto;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  } 
 /* Разделительная линия и копирайт */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15); 
@@ -1006,35 +1082,9 @@ sup {
   display: flex;
   flex-direction: column;
   gap: 16px;
- 
   max-width: 100%;
-  
+ }
 }
-}
-
-/* Кнопка бургера полностью скрыта на десктопе */
-.burger-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: auto; /* Помещает бургер в крайнее правое положение */
-}
-
-/* Полоски внутри бургера */
-.burger-btn span {
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
 
 
 @media (max-width: 768px) {
@@ -1044,9 +1094,29 @@ sup {
 
   .nav-container {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  padding: 16px 20px; /* Уменьшаем отступы по краям */
+  min-width: 0;
+  padding: 16px 0; /* Уменьшаем отступы по краям */
+  }
+
+  .nav-logo {
+    min-width: 0;
+  }
+
+  .nav-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hero-image {
+    aspect-ratio: 4/3; /* Сохраняем соотношение сторон для мобильных, можно и так 16/9 */
+    height: auto;
+  }
+   /* это предложил gpt 23.08.26 */
+  .hero-image img {
+    height: auto;
+    object-fit: contain;
   }
   
   .content-title h1 {
@@ -1064,6 +1134,10 @@ sup {
     padding: 24px 0;
   }
 
+  .feature-container {
+    padding: 40px 0;
+  }
+
   .feature-text h2 {
     font-size: 40px;
   }
@@ -1071,10 +1145,6 @@ sup {
   .feature-text p {
     font-size: 15px;
   }
-
-  /* .feature-visual {
-    display: none; 
-  } */
   
   .feature-row .feature-visual,
   .feature-row.reverse .feature-visual {
@@ -1100,15 +1170,37 @@ sup {
 
   .featured-in {
     margin-top: 40px;
+    width: 100%;
+    min-width: 0;
   }
 
   .press-logos {
     gap: 20px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .press-logos img {
+    max-width: 100%;
   }
 
   .footer-nav {
     grid-template-columns: 1fr;
     gap: 16px;
+    min-width: 0;
+  }
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .footer-column a {
+    overflow-wrap: anywhere;
   }
 
   .footer-column a {
@@ -1118,33 +1210,57 @@ sup {
 
   /* 1. Скрываем текстовые ссылки */
   .nav-menu {
-    display: none; 
+    display: flex;
   }
 
   .auth-group {
     display: none;
   }
 
-  /* 2. Показываем кнопку бургера справа */
   .burger-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
+        display: flex; /* Показываем кнопку на телефонах */
+    }
 
-  /* Полоски бургера */
-  .burger-btn span {
-    width: 100%;
-    height: 2px;
-    background-color: #0b0e22; /* Цвет полосок (подстройте под макет) */
-    border-radius: 2px;
-  }
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Прячем меню за правый край экрана */
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--color-white);
+        flex-direction: column;
+        padding: 100px 32px 32px;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    /* Состояние открытого меню */
+    .nav-menu.active {
+        right: 0; /* Выдвигаем меню */
+    }
+
+    .mobile-auth {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: max-content;
+      margin-top: 24px;
+      list-style: none;
+    }
+
+    .mobile-auth .btn-nav {
+      width: auto;
+      min-width: 0;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    /* Блокируем прокрутку страницы при открытом меню */
+    body.no-scroll {
+        overflow: hidden;
+    }
 
   /* 3. Гарантируем, что логотип не съезжает в центр */
   .logo {
@@ -1194,7 +1310,7 @@ sup {
   }
 
   .footer {
-    padding: 40px 0 20px;
+    padding: 40px 10px 20px;
   }
 
   .footer-inner {
@@ -1202,99 +1318,3 @@ sup {
   }
 } 
 
-
-/* Бургер меню */
-
-
-/* .menu-toggle-checkbox { 
-  display: none;
-}
-
-.menu-toggle {
-  display: none;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  position: relative;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: var(--color-primary-dark);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.menu-toggle span+span {
-  margin-top: 6px;
-}
-
-  .menu-toggle {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    padding: 16px;
-    margin: 0;
-    background: var(--color-white);
-    border-radius: 16px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  }
-
-  .auth-group {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .menu-toggle-checkbox:checked~.nav-menu,
-  .menu-toggle-checkbox:checked~.auth-group {
-    display: flex;
-  }
-
-  .nav-menu {
-    justify-self: stretch;
-  }
-
-  .nav-item {
-    width: 100%;
-    text-align: center;
-  }
-
-  .btn-nav {
-    width: 100%;
-  }
-
-  .btn-login {
-    width: 100%;
-  }
-
-  .btn-get-started {
-    width: 100%;
-  }
-
-  .menu-toggle-checkbox:checked+.menu-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-
-  .menu-toggle-checkbox:checked+.menu-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle-checkbox:checked+.menu-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-  }
- */

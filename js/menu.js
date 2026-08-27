@@ -1,22 +1,35 @@
-// Управление мобильным меню
-const burgerBtn = document.querySelector('.burger-btn');
-const navMenu = document.querySelector('.nav-menu');
-const authGroup = document.querySelector('.auth-group');
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.querySelector('.burger-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-item, .mobile-auth button');
 
-if (burgerBtn) {
-  burgerBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    authGroup.classList.toggle('active');
-    burgerBtn.classList.toggle('active');
-  });
-}
+    // Функция переключения меню
+    const toggleMenu = () => {
+        const isOpen = navMenu.classList.toggle('active');
+        burgerBtn.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        
+        // Обновляем доступность для скринридеров
+        burgerBtn.setAttribute('aria-expanded', isOpen);
+    };
 
-// Закрываем меню при клике на ссылку
-const navItems = document.querySelectorAll('.nav-item');
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    navMenu.classList.remove('active');
-    authGroup.classList.remove('active');
-    burgerBtn.classList.remove('active');
-  });
+    // 1. Клик по кнопке гамбургера
+    burgerBtn.addEventListener('click', toggleMenu);
+
+    // 2. Закрытие меню при клике на любую ссылку
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // 3. Закрытие при клике вне области меню
+    document.addEventListener('click', (event) => {
+        const isClickInside = navMenu.contains(event.target) || burgerBtn.contains(event.target);
+        if (!isClickInside && navMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 });
